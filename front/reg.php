@@ -9,7 +9,7 @@
     <tr>
         <td class="tt ct">帳號</td>
         <td class="pp"><input type="text" name="acc" id="acc">
-            <button>檢測帳號</button>
+            <button onclick="chkAcc()">檢測帳號</button>
         </td>
     </tr>
     <tr>
@@ -30,10 +30,62 @@
     </tr>
 </table>
 <div class="ct">
-    <button>
+    <button onclick="reg()">
         註冊
     </button>
     <button>
         重置
     </button>
 </div>
+
+<script>
+function chkAcc() {
+
+    let acc = $("#acc").val();
+    if (acc == 'admin') {
+        alert("不可使用admin");
+    } else {
+        $.get("api/chk_acc.php", {
+                acc
+            },
+            function(res) {
+
+                if (parseInt(res) >= 1) {
+                    alert("帳號已被使用");
+                } else {
+                    alert("帳號可以使用");
+                }
+            })
+    }
+}
+
+function reg() {
+    let data = {
+        name: $("#name").val(),
+        acc: $("#acc").val(),
+        pw: $("#pw").val(),
+        tel: $("#tel").val(),
+        addr: $("#addr").val(),
+        email: $("#email").val()
+    }
+    if (data.acc == 'admin') {
+        alert("不可使用admin");
+    } else {
+        $.get("api/chk_acc.php", {
+                acc: data.acc
+            },
+            function(res) {
+
+                if (parseInt(res) >= 1) {
+                    alert("帳號已被使用");
+                } else {
+                    $.post("api/reg.php", data, function(res) {
+                        console.log(res);
+
+                        alert("註冊完成 歡迎加入")
+                    })
+                }
+            })
+    }
+}
+</script>

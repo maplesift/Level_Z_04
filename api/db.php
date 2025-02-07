@@ -61,7 +61,7 @@ class DB{
         else{
             $sql .= " where  `id`='$array' ";  
         }
-        return $this->exec($sql);
+        return $this->pdo->exec($sql);
     }
     function save($array){
         if(isset($array['id'])){
@@ -75,7 +75,9 @@ class DB{
                 $keys=join("`,`",array_keys($array));
                 $val =join("','",$array);
                 $sql=" INSERT INTO $this->table (`{$keys}`) values('{$val}')";
+                
         }
+        return $this->pdo->exec($sql);
     }
 
     function count(...$array){
@@ -107,3 +109,5 @@ function dd($array){
     print_r($array);
     echo "</pre>";
 }
+
+$Mem=new DB("members");
