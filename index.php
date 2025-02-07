@@ -26,10 +26,31 @@
                 <a href="?do=news">最新消息</a> |
                 <a href="?do=look">購物流程</a> |
                 <a href="?do=buycart">購物車</a> |
+                <?php
+                if(empty($_SESSION['Mem'])){
+                ?>
+                
                 <a href="?do=login">會員登入</a> |
-                <a href="?do=admin">管理登入</a>
+                <?php 
+                }else{
+                ?>
+                <a href="./api/logout.php?table=Mem">登出</a> |
+                <?php
+                }
+                ?>
+                <?php 
+                if(empty($_SESSION['Admin'])){
+                ?>
+                <a href="?do=admin">管理登入</a> |
+                <?php
+                }else{
+                    ?>
+                <a href="admin.php">返回管理</a> |
+                <?php 
+                    }
+                ?>
+
             </div>
-            情人節特惠活動 &nbsp; 為了慶祝七夕情人節，將舉辦情人兩人到現場有七七折之特惠活動~
         </div>
         <div id="left" class="ct">
             <div style="min-height:400px;">
