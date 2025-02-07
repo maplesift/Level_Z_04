@@ -16,8 +16,8 @@
         </td>
         <td class="pp">
             <?php
-        $a=rand(10,99);
-        $b=rand(10,99);
+        $a=rand(10,50);
+        $b=rand(10,50);
         $_SESSION['ans']=$a+$b;
         echo $a ." + ". $b ." = ";
         ?>
@@ -40,8 +40,18 @@ function login() {
     }, function(res) {
         if (parseInt(res)) {
             console.log(res);
+            // alert("正確")
+            $.get("api/chk_pw.php", {
+                acc: $("#acc").val(),
+                pw: $("#pw").val(),
 
-            alert("正確")
+            }, function(res) {
+                if (parseInt(res)) {
+                    location.href = 'index.php';
+                } else {
+                    alert("帳號密碼錯誤")
+                }
+            })
         } else {
             console.log(res);
             alert("驗證碼錯誤 請重新輸入")

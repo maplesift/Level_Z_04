@@ -81,7 +81,6 @@ function reg() {
                 } else {
                     $.post("api/reg.php", data, function(res) {
                         console.log(res);
-
                         alert("註冊完成 歡迎加入")
                     })
                 }
