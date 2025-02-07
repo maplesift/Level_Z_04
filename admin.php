@@ -38,7 +38,7 @@
         <div id="right">
             <?php
         $do=$_GET['do']??'admin';
-        $file="front/".$do.".php";
+        $file="admin/".$do.".php";
         if(file_exists($file)){
                 include $file;
         }else{
