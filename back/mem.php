@@ -19,7 +19,7 @@
             <button onclick="location.href='?do=edit_mem&id=<?=$row['id'];?>'">
             修改
             </button>
-            <button>
+            <button onclick="del('Mem',<?=$row['id'];?>)">
             刪除
             </button>
         </td>

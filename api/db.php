@@ -53,7 +53,7 @@ class DB{
         return $this->fetchOne($sql);
     }
     function del($array){
-        $sql=" SELECT * FROM $this->table ";
+        $sql=" DELETE  FROM $this->table ";
         if(is_array($array)){
             $tmp=$this->a2s($array);
             $sql .= " where ".join(" && ",$tmp);
@@ -63,6 +63,8 @@ class DB{
         }
         return $this->pdo->exec($sql);
     }
+
+
     function save($array){
         if(isset($array['id'])){
             // update
