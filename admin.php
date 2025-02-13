@@ -38,13 +38,12 @@
         <div id="right">
             <?php
         $do=$_GET['do']??'admin';
-        $file="admin/".$do.".php";
+        $file="back/".$do.".php";
         if(file_exists($file)){
                 include $file;
         }else{
                 include "back/admin.php";
         }
-        
         
         ?>
         </div>
