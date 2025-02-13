@@ -33,7 +33,7 @@ class DB{
         $tmp=$this->a2s($arg[0]);
         $sql .= " where ".join(" && ",$tmp);            
         }
-        else if(is_string($arg[0])){
+        else if(isset($arg[0]) && is_string($arg[0])){
             $sql .= $arg[0];
         }
         if(!empty($arg[1])){
