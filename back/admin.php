@@ -22,7 +22,7 @@
                 echo "此帳號為最高權限";
             else:
             ?>
-            <button>
+            <button onclick="location.href='?do=edit_admin&id=<?=$row['id'];?>'">
             修改
             </button>
             <button>
