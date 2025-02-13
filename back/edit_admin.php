@@ -44,5 +44,6 @@ $userPr=unserialize($row['pr']);
     <div class="ct">
         <input type="submit" value="修改">
         <input type="reset" value="重置">
+        <input type="hidden" name="id" value="<?=$row['id'];?>">
     </div>
 </form>
