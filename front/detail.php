@@ -34,6 +34,16 @@ $row=$Item->find($_GET['id']);
         <div class="pp">價格:<?=$row['price'];?></div>
         <div class="pp">詳細說明:<?=nl2br($row['intro']);?></div>
         <div class="pp">庫存量:<?=($row['stock']);?></div>
-        
     </div>
 </div>
+<div class="tt ct">
+    <input type="number" name="qt" id="qt" value='1'>
+    <img src="./icon/0402.jpg" onclick="buy()">
+</div>
+<script>
+    function buy(){
+        let qt=$("#qt").val();
+        location.href=`?do=buycart&id=<?=$_GET['id'];?>&qt=${qt}`;
+    }
+
+</script>
