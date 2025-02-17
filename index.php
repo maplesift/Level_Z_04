@@ -54,9 +54,36 @@
         </div>
         <div id="left" class="ct">
             <div style="min-height:400px;">
+            <a href="?type=0">全部商品</a>
+                <?php
+                $bigs=$Type->all(['big_id'=>0]);
 
-
+                foreach ($bigs as $big) {
+                    echo "<div class='ww'>";
+                    echo "<a href='?type={$big['id']}'>";
+                    echo $big['name'];
+                    echo "</a>";
+                    if($Type->count(['big_id'=>$big['id']])>0){
+                        $mids=$Type->all(['big_id'=>$big['id']]);
+                        echo "<div class='s'> ";
+                        foreach ($mids as $mid) {
+                            echo "<a href='?type={$mid['id']}' style='background-color: #7ee185;'>";
+                            echo $mid['name'];
+                            echo "</a>";
+                        }
+                        echo "</div>";
+                    }
+                    echo "</div>";
+                    
+                } 
+                ?>
             </div>
+            <!-- <div class="ww">
+                321
+                <div class="s">
+                    
+                </div>
+            </div> -->
             <span>
                 <div>進站總人數</div>
                 <div style="color:#f00; font-size:28px;">
@@ -66,11 +93,11 @@
         <div id="right">
             <?php
         $do=$_GET['do']??'main';
-        $file="front/".$do.".php";
+        $file="./front/".$do.".php";
         if(file_exists($file)){
                 include $file;
         }else{
-                include "front/main.php";
+                include "./front/main.php";
         }
         ?>
 

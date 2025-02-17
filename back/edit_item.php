@@ -56,7 +56,7 @@ $item=$Item->find($_GET['id']);
     </table>
     <div class="ct">
         <input type="hidden" name="id" value="<?=$item['id'];?>">
-        <input type="submit" value="新增">
+        <input type="submit" value="修改">
         <input type="reset" value="重置">
         <input type="button" value="返回" onclick="location.href='?do=th'">
     </div>

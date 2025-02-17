@@ -110,11 +110,23 @@ input[type=password] {
 }
 
 .s {
-	display: none;
+	/* display: none; */
+	/* background-color: greenyellow; */
+	max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+	opacity: 0;
+    visibility: hidden;
+    /* transition: opacity 0.3s ease, visibility 0.3s ease; */
+	
 }
 
 div.ww:hover>div.s {
-	display: block;
+	/* display: block; */
+	/* 根據內容調整 */
+	max-height: 200px;
+	opacity: 1;
+    visibility: visible;
 }
 
 .sb button {

@@ -94,6 +94,7 @@ class DB{
         if(!empty($array[1])){
             $sql .= $array[1];
         }
+        // echo $sql;
         return $this->pdo->query($sql)->fetchColumn();
     }
 }
