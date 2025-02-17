@@ -40,7 +40,9 @@ if($typeId==0){
     $rows=$Item->all();
     
 }else if($type['big_id']==0){
+    // 找出大分類
     $rows=$Item->all(['big'=>$typeId]);
+    // 其餘的是中分類
 }else{
     $rows=$Item->all(['mid'=>$typeId]);
 }

@@ -29,7 +29,7 @@
                 <?php
                 if(empty($_SESSION['Mem'])){
                 ?>
-                
+
                 <a href="?do=login">會員登入</a> |
                 <?php 
                 }else{
@@ -54,7 +54,7 @@
         </div>
         <div id="left" class="ct">
             <div style="min-height:400px;">
-            <a href="?type=0">全部商品</a>
+                <a href="?type=0">全部商品</a>
                 <?php
                 $bigs=$Type->all(['big_id'=>0]);
 
@@ -78,12 +78,16 @@
                 } 
                 ?>
             </div>
-            <!-- <div class="ww">
-                321
+            <div class="ww">
+                <a href="">
+
+                </a>
                 <div class="s">
-                    
+                    <a href="">
+                        
+                    </a>
                 </div>
-            </div> -->
+            </div>
             <span>
                 <div>進站總人數</div>
                 <div style="color:#f00; font-size:28px;">
@@ -104,8 +108,8 @@
 
         </div>
         <div id="bottom" style="line-height:70px;background:url(icon/bot.png); color:#FFF;" class="ct">
-        <?=$Bot->find(1)['bottom'];?></div>
-        </div>
+            <?=$Bot->find(1)['bottom'];?></div>
+    </div>
     </div>
 
 </body>

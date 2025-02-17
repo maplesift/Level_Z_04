@@ -15,7 +15,9 @@
     <?php
     // 先找大分類
     $bigs=$Type->all(['big_id'=>0]);
+    // dd($bigs);
     foreach($bigs as $big):
+        // dd($big['id']);
     ?>
     <tr>
         <td class="tt"> <?=$big['name'];?> </td>
@@ -26,13 +28,17 @@
     </tr>
     <?php
     // 如果count出來大於0 則顯示
-    if($Type->count(['big_id'=>$big['id']])>0):
+    // if($Type->count(['big_id'=>$big['id']])>0):
     // 撈出中分類
     $mids=$Type->all(['big_id'=>$big['id']]);
+    // dd($mids);
+
     foreach($mids as $mid):
     ?>
     <tr class="ct">
-        <td class="pp"><?=$mid['name']?></td>
+        <td class="pp">
+            <?=$mid['name']?>
+        </td>
         <td class="pp ">
             <button onclick="editType(<?=$mid['id'];?>,this)">修改</button>
             <button onclick="del('Type',<?=$mid['id'];?>)">刪除</button>
@@ -42,7 +48,7 @@
     //  mid foreach
         endforeach;
 
-    endif;
+    // endif;
     ?>
     <?php
     // big foreach
@@ -64,7 +70,7 @@
         <td class="ct">商品名稱</td>
         <td class="ct">庫存量</td>
         <td class="ct">狀態</td>
-        <td class="ct"     width= '20%'>操作</td>
+        <td class="ct" width='20%'>操作</td>
     </tr>
     <?php
     $rows=$Item->all();
@@ -75,7 +81,7 @@
         <td><?=$row['name'];?></td>
         <td class="ct"><?=$row['stock'];?></td>
         <td class="ct"><?=($row['sh']==1)?"販售中":"已下架";?></td>
-        <td class="ct" width= '20%'>
+        <td class="ct" width='20%'>
             <button onclick="location.href='?do=edit_item&id=<?=$row['id'];?>'">修改</button>
             <button onclick="del('Item',<?=$row['id'];?>)">刪除</button>
             <button onclick="sh(<?=$row['id'];?>,1,this)">上架</button>
@@ -129,11 +135,14 @@ function editType(id, dom) {
     })
 }
 
-function sh(id,type,dom){
-    $.post("./api/sh.php",{type,id},function(){
+function sh(id, type, dom) {
+    $.post("./api/sh.php", {
+        type,
+        id
+    }, function() {
         //location.reload();
 
-        $(dom).parent().prev().text((type==1)?'販售中':'已下架');
+        $(dom).parent().prev().text((type == 1) ? '販售中' : '已下架');
     })
 }
 </script>
