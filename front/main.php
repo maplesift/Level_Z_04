@@ -37,14 +37,14 @@ if($typeId==0){
 // $rows=$Item->all();
 if($typeId==0){
     // 全部
-    $rows=$Item->all();
+    $rows=$Item->all(['sh'=>1]);
     
 }else if($type['big_id']==0){
     // 找出大分類
-    $rows=$Item->all(['big'=>$typeId]);
+    $rows=$Item->all(['big'=>$typeId,'sh'=>1]);
     // 其餘的是中分類
 }else{
-    $rows=$Item->all(['mid'=>$typeId]);
+    $rows=$Item->all(['mid'=>$typeId,'sh'=>1]);
 }
 
 ?>
