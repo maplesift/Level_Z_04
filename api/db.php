@@ -88,7 +88,7 @@ class DB{
         $tmp=$this->a2s($array[0]);
         $sql .= " where ".join(" && ",$tmp);            
         }
-        else if(!is_string($array[0])){
+        else if(isset($array[0]) && is_string($array[0])){
             $sql .= $array[0];
         }
         if(!empty($array[1])){

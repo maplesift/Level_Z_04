@@ -80,7 +80,9 @@
         <td class="ct"><?=$row['no'];?></td>
         <td><?=$row['name'];?></td>
         <td class="ct"><?=$row['stock'];?></td>
-        <td class="ct"><?=($row['sh']==1)?"販售中":"已下架";?></td>
+        <td class="ct">
+            <?=($row['sh']==1)?"販售中":"已下架";?>
+    </td>
         <td class="ct" width='20%'>
             <button onclick="location.href='?do=edit_item&id=<?=$row['id'];?>'">修改</button>
             <button onclick="del('Item',<?=$row['id'];?>)">刪除</button>
