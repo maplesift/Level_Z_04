@@ -64,7 +64,7 @@ foreach($rows as $row):
         </div>
         <div class="pp">
             價錢:<?=$row['price'];?>
-            <a href="?do=buycart&id=<?=$row['id'];?>&qt=1">
+            <a href="javascript:buycart(<?=$row['id'];?>,1)">
 
                 <img src="./icon/0402.jpg" style="float: right;">
             </a>
@@ -76,3 +76,20 @@ foreach($rows as $row):
 <?php
 endforeach;
 ?>
+
+<script>
+function buycart(id,qt){
+    $.post("./api/buycart.php",{id,qt},function(count){
+        $("#items").text(`(${count})`);
+        alert("已加入購物車");
+    })
+}
+
+// function buycart(id,qt){
+//     $.post("api/buycart.php",{id,qt},function(count){
+//         $("#items").text(`(${count})`);
+//         alert("已加入購物車");
+//     })
+// }    
+    
+</script>
